@@ -1,4 +1,4 @@
-project: Secure Git Project
+project: Secure Git MY Project
 settings:
   debug: true
   log_level: INFO
