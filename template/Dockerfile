@@ -1,6 +1,7 @@
-FROM python:3.9
+        FROM python:3.9
 
-WORKDIR /app
-COPY template.yml /app/
+        WORKDIR /app
+        COPY template.yml /app/
 
-CMD ["cat", "/app/template.yml"]
+        CMD ["cat", "/app/template.yml"]
+        
