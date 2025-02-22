@@ -1,0 +1,5 @@
+project: Secure Git Project
+settings:
+  debug: true
+  log_level: INFO
+version: '1.0'
