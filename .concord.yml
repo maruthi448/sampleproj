@@ -1,0 +1,17 @@
+configuration:
+  dependencies:
+  - mvn://com.walmartlabs.concord.plugins.basic:ansible-tasks:2.14.0
+
+flows:
+  default:
+  - task: ansible
+  - log: " entering into log"
+    in:
+      config:
+        defaults:
+          forks: 50
+        ssh_connection:
+          pipelining: True
+      playbook: playbook/test.yml
+      inventory: inventory/dev.ini
+    out: ansibleResult
