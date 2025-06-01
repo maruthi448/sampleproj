@@ -7,4 +7,13 @@ configuration:
 
 flows:
   default:
-  - log: "Hello Concord"
+    - log: "Hello World"
+    - task: http
+      in:
+        url: "https://google.com"
+      out: result
+
+    - if: ${not result.ok}
+      then:
+        - log: "task failed: ${result.error}"
+
