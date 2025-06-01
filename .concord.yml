@@ -1,0 +1,10 @@
+configuration:
+  runtime: "concord-v2"
+# flows:
+#   main:
+#     - log: "Hello World"
+
+
+flows:
+  default:
+  - log: "Hello Concord"
