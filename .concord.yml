@@ -1,19 +1,23 @@
 configuration:
-  runtime: "concord-v2"
-# flows:
-#   main:
-#     - log: "Hello World"
-
+  runtime: concord-v2
+  dependencies:
+    - "mvn://com.walmartlabs.concord.plugins.basic:http-tasks:1.73.0"
 
 flows:
   default:
-    - log: "Hello World"
     - task: http
       in:
-        url: "https://google.com"
-      out: result
-
-    - if: ${not result.ok}
-      then:
-        - log: "task failed: ${result.error}"
-
+        # imagine a slow API call here
+        url: "https://jsonplaceholder.typicode.com/todos/${item}"
+        response: json
+      out: results # loop turns "results" into a list of results for each item
+      loop:
+        items:
+          - "1"
+          - "2"
+          - "3"
+        mode: parallel
+        parallelism: 2 # optional number of threads 
+        
+    # grab titles from all todos
+    - log: ${results.stream().map(o -> o.content.title).toList()}
