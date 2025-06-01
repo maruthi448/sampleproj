@@ -1,1 +1,12 @@
-
+- hosts: all
+- name: my test
+  tasks:
+    - name: my test1
+      become: yes
+      become_user: maruthikumark
+      shell: echo "my name is my name"
+      register: output
+      async: 36000
+      poll: 30
+      ignore_errors: True
+    #- debug: output.stdout
